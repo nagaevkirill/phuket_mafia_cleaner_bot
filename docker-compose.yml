@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  tgbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: phuket_mafia_bot_cleaner:latest
+    container_name: phuket_mafia_bot_cleaner
+    command: ["python", "-u", "app.py"]   # -u = непрос.Buffered stdout для логов
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app                  # чтобы import my_service.* точно находился
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

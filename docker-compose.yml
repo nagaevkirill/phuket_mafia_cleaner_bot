@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: phuket_mafia_bot_cleaner:latest
-    container_name: phuket_mafia_bot_cleaner
+    image: phuket_mafia_cleaner_bot:latest
+    container_name: phuket_mafia_cleaner_bot
     command: ["python", "-u", "app.py"]   # -u = непрос.Buffered stdout для логов
     environment:
       - PYTHONUNBUFFERED=1
